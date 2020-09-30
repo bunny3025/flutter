@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Its sample program which shows initial learning and hello world.
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
