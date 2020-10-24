@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(PersonalityQuestionApp());
 
-class PersonalityQuestionApp extends StatelessWidget {
+class PersonalityQuestionApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return PersonalityQuestionAppState();
+  }
+}
+
+class PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
   var questionIndex = 0;
 
   void answerQuestion() {
@@ -26,7 +33,7 @@ class PersonalityQuestionApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title: Text(questions.elementAt(questionIndex)),
+              title: Text('Question Answer'),
             ),
             body: Column(
               children: [
