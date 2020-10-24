@@ -5,19 +5,19 @@ void main() => runApp(PersonalityQuestionApp());
 class PersonalityQuestionApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return PersonalityQuestionAppState();
+    return _PersonalityQuestionAppState();
   }
 }
 
-class PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
-  var questionIndex = 0;
+class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
+  var _questionIndex = 0;
 
   void answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-    print(questionIndex);
-    print(questions.elementAt(questionIndex));
+    print(_questionIndex);
+    print(questions.elementAt(_questionIndex));
   }
 
   var questions = [
@@ -39,7 +39,7 @@ class PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
             ),
             body: Column(
               children: [
-                Text(questions[questionIndex]),
+                Text(questions[_questionIndex]),
                 RaisedButton(
                   child: Text('Answer 1'),
                   onPressed: answerQuestion,
