@@ -13,7 +13,9 @@ class PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
   var questionIndex = 0;
 
   void answerQuestion() {
-    questionIndex = questionIndex + 1;
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print(questionIndex);
     print(questions.elementAt(questionIndex));
   }
@@ -37,7 +39,7 @@ class PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
             ),
             body: Column(
               children: [
-                Text(questions.elementAt(0)),
+                Text(questions[questionIndex]),
                 RaisedButton(
                   child: Text('Answer 1'),
                   onPressed: answerQuestion,
