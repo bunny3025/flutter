@@ -12,17 +12,7 @@ class PersonalityQuestionApp extends StatefulWidget {
 }
 
 class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
-  var _questionIndex = 0;
-
-  void _answerQuestion() {
-    setState(() {
-      _questionIndex = _questionIndex + 1;
-    });
-    print(_questionIndex);
-    print(questions.elementAt(_questionIndex));
-  }
-
-  var questions = [
+  final questions = [
     {
       'questionText': 'tipi tipi top which color you want?',
       'answers': [1, 2, 3, 4]
@@ -59,6 +49,17 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
       'answers': [1, 2, 3, 4]
     },
   ];
+  var _questionIndex = 0;
+
+  void _answerQuestion() {
+    if (_questionIndex < questions.length) {
+      print('We have alot questions.');
+    }
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+    print(_questionIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +68,18 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
             appBar: AppBar(
               title: Text('Question Answer'),
             ),
-            body: Column(
-              children: [
-                Question(questions[_questionIndex]['questionText']),
-                ...(questions[_questionIndex]['answers'] as List<int>)
-                    .map((answer) {
-                  return Answer(_answerQuestion, answer.toString());
-                }).toList()
-              ],
-            )));
+            body: _questionIndex < questions.length
+                ? Column(
+                    children: [
+                      Question(questions[_questionIndex]['questionText']),
+                      ...(questions[_questionIndex]['answers'] as List<int>)
+                          .map((answer) {
+                        return Answer(_answerQuestion, answer.toString());
+                      }).toList()
+                    ],
+                  )
+                : Center(
+                    child: Text('You did it buddy !!!'),
+                  )));
   }
 }
