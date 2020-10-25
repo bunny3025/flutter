@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learning_flutter/quiz.dart';
+import 'package:learning_flutter/result.dart';
 import './question.dart';
 import './answer.dart';
 
@@ -12,7 +14,7 @@ class PersonalityQuestionApp extends StatefulWidget {
 }
 
 class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
-  final questions = [
+  final _questions = [
     {
       'questionText': 'tipi tipi top which color you want?',
       'answers': [1, 2, 3, 4]
@@ -50,14 +52,17 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
     },
   ];
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
-    if (_questionIndex < questions.length) {
+  void _answerQuestion(int score) {
+    if (_questionIndex < _questions.length) {
       print('We have alot questions.');
     }
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
+    this._totalScore += score;
+
     print(_questionIndex);
   }
 
@@ -68,18 +73,12 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
             appBar: AppBar(
               title: Text('Question Answer'),
             ),
-            body: _questionIndex < questions.length
-                ? Column(
-                    children: [
-                      Question(questions[_questionIndex]['questionText']),
-                      ...(questions[_questionIndex]['answers'] as List<int>)
-                          .map((answer) {
-                        return Answer(_answerQuestion, answer.toString());
-                      }).toList()
-                    ],
+            body: _questionIndex < _questions.length
+                ? Quiz(
+                    answerQuestion: _answerQuestion,
+                    questions: _questions,
+                    questionIndex: _questionIndex,
                   )
-                : Center(
-                    child: Text('You did it buddy !!!'),
-                  )));
+                : Result(_totalScore)));
   }
 }
