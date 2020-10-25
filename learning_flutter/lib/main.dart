@@ -79,6 +79,13 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
                     questions: _questions,
                     questionIndex: _questionIndex,
                   )
-                : Result(_totalScore)));
+                : Result(_totalScore, _resetQuiz)));
+  }
+
+  _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
   }
 }
