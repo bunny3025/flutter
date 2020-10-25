@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learning_flutter/questionBank.dart';
 import 'package:learning_flutter/quiz.dart';
 import 'package:learning_flutter/result.dart';
 import './question.dart';
@@ -14,54 +15,20 @@ class PersonalityQuestionApp extends StatefulWidget {
 }
 
 class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
-  final _questions = [
-    {
-      'questionText': 'tipi tipi top which color you want?',
-      'answers': [1, 2, 3, 4]
-    },
-    {
-      'questionText': 'seriously you wanted red color?',
-      'answers': [1, 2, 3, 4, 5]
-    },
-    {
-      'questionText': 'seriously you wanted yellow color?',
-      'answers': [1, 2, 3, 4, 5, 6]
-    },
-    {
-      'questionText': 'seriously you wanted green color?',
-      'answers': [1, 2, 3, 4, 5],
-    },
-    {
-      'questionText': 'seriously you wanted red color?',
-      'answers': [
-        1,
-        2,
-        3,
-      ]
-    },
-    {
-      'questionText': 'seriously you wanted blue color?',
-      'answers': [
-        1,
-        2,
-      ]
-    },
-    {
-      'questionText': 'seriously you wanted pink color?',
-      'answers': [1, 2, 3, 4]
-    },
-  ];
+  final _questions = QuestionBank.characterAssessment1;
   var _questionIndex = 0;
   var _totalScore = 0;
 
-  void _answerQuestion(int score) {
+  void _answerQuestion(String response) {
     if (_questionIndex < _questions.length) {
       print('We have alot questions.');
     }
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
-    this._totalScore += score;
+    if (response == 'Yes') {
+      this._totalScore += 1;
+    }
 
     print(_questionIndex);
   }
@@ -71,7 +38,7 @@ class _PersonalityQuestionAppState extends State<PersonalityQuestionApp> {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              title: Text('Question Answer'),
+              title: Text('Character Assessment'),
             ),
             body: _questionIndex < _questions.length
                 ? Quiz(

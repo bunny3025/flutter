@@ -18,9 +18,18 @@ class Quiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Container(
+          child: Text(
+            'THE FOUNDATION OF LEADERSHIP: CHARACTER',
+            style: TextStyle(fontSize: 20),
+            textAlign: TextAlign.center,
+          ),
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
+        ),
         Question(questions[questionIndex]['questionText']),
-        ...(questions[questionIndex]['answers'] as List<int>).map((answer) {
-          return Answer(() => answerQuestion(answer), answer.toString());
+        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+          return Answer(() => answerQuestion(answer), answer);
         }).toList()
       ],
     );

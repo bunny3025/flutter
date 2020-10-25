@@ -8,13 +8,13 @@ class Result extends StatelessWidget {
 
   String get resultText {
     print(this.totalScore);
-    var finalText;
+    var finalText = 'Your scor is ${totalScore}, and it is ';
     if (totalScore < 6) {
-      finalText = 'So bad';
+      finalText += 'So bad dear';
     } else if (totalScore > 6 && totalScore < 10) {
-      finalText = 'considrable';
+      finalText += 'considrable';
     } else {
-      finalText = 'So good your are';
+      finalText += 'good, really happy to see that';
     }
     return finalText;
   }
@@ -23,14 +23,20 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(children: <Widget>[
-      Text(
-        resultText,
-        style: TextStyle(fontSize: 20),
+      Container(
+        child: Text(
+          resultText,
+          style: TextStyle(fontSize: 30),
+          textAlign: TextAlign.center,
+        ),
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
       ),
       FlatButton(
         child: Text(
-          'Reset Quiz...',
+          'Re-Take Quiz...',
           style: TextStyle(fontStyle: FontStyle.italic),
+          textAlign: TextAlign.center,
         ),
         onPressed: resetQuizHandler,
         textColor: Colors.red,
