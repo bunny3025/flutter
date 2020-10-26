@@ -2,42 +2,15 @@ import 'package:expense_monitor/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class TransactionList extends StatefulWidget {
-  @override
-  _State createState() => _State();
-}
+class TransactionList extends StatelessWidget {
+  final List<Transaction> transaction;
 
-class _State extends State<TransactionList> {
-  final List<Transaction> userTransaction = [
-    Transaction(
-      id: 't1',
-      amount: 30,
-      date: DateTime.now(),
-      title: 'Apple',
-    ),
-    Transaction(
-      id: 't2',
-      amount: 10,
-      date: DateTime.now(),
-      title: 'Orange',
-    ),
-    Transaction(
-      id: 't3',
-      amount: 20,
-      date: DateTime.now(),
-      title: 'Banana',
-    ),
-    Transaction(
-      id: 't1',
-      amount: 60,
-      date: DateTime.now(),
-      title: 'Lube',
-    )
-  ];
+  TransactionList(this.transaction);
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: userTransaction.map((tx) {
+      children: transaction.map((tx) {
         return Card(
           child: Row(
             children: <Widget>[
