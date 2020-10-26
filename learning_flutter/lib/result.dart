@@ -8,7 +8,7 @@ class Result extends StatelessWidget {
 
   String get resultText {
     print(this.totalScore);
-    var finalText = 'Your scor is ${totalScore}, and it is ';
+    var finalText = 'Your score is ${totalScore}, and it is ';
     if (totalScore < 6) {
       finalText += 'So bad dear';
     } else if (totalScore > 6 && totalScore < 10) {
