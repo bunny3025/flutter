@@ -1,3 +1,4 @@
+import 'package:expense_monitor/transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(ExpenseMonitorApp());
@@ -13,6 +14,33 @@ class ExpenseMonitorApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final List<Transaction> transaction = [
+    Transaction(
+      id: 't1',
+      amount: 30,
+      date: DateTime.now(),
+      title: 'Apple',
+    ),
+    Transaction(
+      id: 't2',
+      amount: 10,
+      date: DateTime.now(),
+      title: 'Orange',
+    ),
+    Transaction(
+      id: 't3',
+      amount: 20,
+      date: DateTime.now(),
+      title: 'Banana',
+    ),
+    Transaction(
+      id: 't1',
+      amount: 60,
+      date: DateTime.now(),
+      title: 'Lube',
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +64,24 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            child: Text('all the tx avail here'),
-            color: Colors.red,
+          Column(
+            children: transaction.map((tx) {
+              return Card(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(tx.amount.toString()),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Text(tx.title),
+                        Text(tx.date.toString())
+                      ],
+                    )
+                  ],
+                ),
+              );
+            }).toList(),
           )
         ],
       ),
