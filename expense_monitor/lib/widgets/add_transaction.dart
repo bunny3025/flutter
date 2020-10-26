@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class AddTransactions extends StatelessWidget {
   final inputTitleController = TextEditingController();
   final inputAmountController = TextEditingController();
+  final Function addTx;
+
+  AddTransactions(this.addTx);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,12 @@ class AddTransactions extends StatelessWidget {
                 'Add Expense',
               ),
               textColor: Colors.orange,
-              onPressed: () {},
+              onPressed: () {
+                addTx(
+                  inputTitleController.text,
+                  double.parse(inputAmountController.text),
+                );
+              },
             ),
           ],
         ),
