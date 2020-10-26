@@ -22,25 +22,23 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense Monitor'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                child: Container(
-                  color: Colors.blue,
-                  child: Text(
-                    'Chart placeholder',
-                  ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            child: Card(
+              child: Container(
+                color: Colors.blue,
+                child: Text(
+                  'Chart placeholder',
                 ),
-                elevation: 5,
               ),
+              elevation: 5,
             ),
-            UserTransaction()
-          ],
-        ),
+          ),
+          UserTransaction()
+        ],
       ),
     );
   }
