@@ -1,5 +1,6 @@
 import 'package:expense_monitor/widgets/add_transaction.dart';
 import 'package:expense_monitor/widgets/trabsaction_list.dart';
+import 'package:expense_monitor/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(ExpenseMonitorApp());
@@ -36,8 +37,7 @@ class HomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          AddTransactions(),
-          TransactionList()
+          UserTransaction()
         ],
       ),
     );
