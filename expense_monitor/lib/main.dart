@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.all(5),
                           child: Text(
-                            DateFormat.yMd().format(tx.date),
+                            DateFormat.yMMMMd().format(tx.date),
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
