@@ -42,6 +42,9 @@ class HomePage extends StatelessWidget {
     )
   ];
 
+  String inputTitle;
+  String inputAmount;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +52,7 @@ class HomePage extends StatelessWidget {
         title: Text('Expense Monitor'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -63,6 +66,35 @@ class HomePage extends StatelessWidget {
                 //width: double.infinity,
               ),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    onChanged: (value) {
+                      this.inputTitle = value;
+                    },
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    onChanged: (value) => this.inputAmount = value,
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Add Expense',
+                    ),
+                    textColor: Colors.orange,
+                    onPressed: () {
+                      print(inputTitle + inputAmount);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
