@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/questionBank.dart';
-import 'package:learning_flutter/quiz.dart';
-import 'package:learning_flutter/result.dart';
-import './question.dart';
-import './answer.dart';
+import './questionBank.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(PersonalityQuestionApp());
 
